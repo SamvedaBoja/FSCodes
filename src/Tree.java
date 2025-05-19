@@ -677,6 +677,31 @@ Sample Testcase:1
 input=1 2 3
 output=1
 
+import java.util.*;
+/*
+class TreeNode {
+    int val;
+    TreeNode left, right;
+    TreeNode(int val) { this.val = val; }
+}
+
+public class Solution {
+    private int total=0;
+    public int findTilt(TreeNode root) {
+        getSum(root);
+        return total;
+    }
+    public int getSum(TreeNode root){
+        if(root == null)
+            return 0;
+        int lsum = getSum(root.left);
+        int rsum = getSum(root.right);
+        int tilt = Math.abs(lsum - rsum);
+        total += tilt;
+
+        return root.val + lsum + rsum;
+    }
+}
 
  */
 
@@ -715,6 +740,65 @@ class Solution {
         root.right = BST(nums,mid+1,r);
 
         return root;
+    }
+}
+ */
+/*
+Program to construct a binary tree and traverse the tree in
+preorder, inorder, postorder
+
+Sample Testcase:1
+---------------------------------
+input=1 2 3 4 5 6 7 8 9
+output=
+1 2 4 8 9 5 3 6 7
+8 4 9 2 5 1 6 3 7
+8 9 4 5 2 6 7 3 1
+
+import java.util.*;
+
+
+/*class Node {
+    int data;
+    Node left, right;
+
+    Node(int value) {
+        data = value;
+        left = right = null;
+    }
+}
+
+class Solution {
+    static  List<Integer> al = new ArrayList<>();
+    static  List<Integer> al1 = new ArrayList<>();
+    static  List<Integer> al2 = new ArrayList<>();
+
+    public static List<Integer> preorder(Node root){
+        if(root == null)
+            return null;
+        al.add(root.data);
+        preorder(root.left);
+        preorder(root.right);
+        return al;
+    }
+
+
+    public static List<Integer> inorder(Node root) {
+        if(root == null)
+            return null;
+        inorder(root.left);
+        al1.add(root.data);
+        inorder(root.right);
+        return al1;
+    }
+
+    public static List<Integer> postorder(Node root) {
+        if(root == null)
+            return null;
+        postorder(root.left);
+        postorder(root.right);
+        al2.add(root.data);
+        return al2;
     }
 }
  */
