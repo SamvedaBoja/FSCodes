@@ -1,4 +1,3 @@
-
 /*
 There are n rooms labeled from 0 to n - 1 and all the rooms are locked except for room 0.
 Your goal is to visit all the rooms. However, you cannot enter a locked room without having its key.
@@ -106,6 +105,7 @@ Explanation:
 The given graph is shown above.
 Nodes 5 and 6 are terminal nodes as there are no outgoing edges from either of them.
 Every path starting at nodes 2, 4, 5, and 6 all lead to either node 5 or 6.
+
 import java.util.*;
 class Solution{
     public List<Integer> eventualSafeNodes(int[][] graph) {
@@ -134,15 +134,3 @@ class Solution{
 }
  */
 
-/*
-Given an integer array nums of unique elements, return all possible subsets (the power set).
-
-The solution set must not contain duplicate subsets. Return the solution in any order.
-
-Sample Testcase:1
-----------------------------------------
-input=1 2 3
-output=[[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]]
-
-
- */

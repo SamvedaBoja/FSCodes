@@ -92,3 +92,32 @@ class Solution {
     }
 }
  */
+/*
+//unique binary search trees
+
+import java.math.BigInteger;
+class Solution {
+    public int numTrees(int n) {
+        BigInteger res = BigInteger.ONE;
+        // Compute C(2n, n)
+        for (int i = 0; i < n; i++) {
+            res = res.multiply(BigInteger.valueOf(2 * n - i))
+                     .divide(BigInteger.valueOf(i + 1));
+        }
+        // Divide by (n + 1)
+        res = res.divide(BigInteger.valueOf(n + 1));
+        return res.intValue();  // Safe since result < 2^31 for n <= 19
+
+        /*
+        int result =0;
+        if(n==1 || n==0){
+            return 1;
+        }
+        for(int i=0;i<n;i++){
+            result += numTrees(i)*numTrees(n-i-1);
+        }
+        return result;
+        
+    }
+            }
+ */

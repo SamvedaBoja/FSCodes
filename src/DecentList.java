@@ -47,7 +47,7 @@ class DecentList{
         Scanner sc=new Scanner(System.in);
         int n=sc.nextInt();
         List<Integer> list = new ArrayList<>();
-        ;       for(int i=0;i<n;i++){
+            for(int i=0;i<n;i++){
             list.add(sc.nextInt());
         }
         int count =0;

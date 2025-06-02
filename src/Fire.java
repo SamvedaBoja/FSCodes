@@ -43,5 +43,55 @@ Explanation:
 The fire starts at cell (1, 1) which is a tree (1). It spreads to all connected trees (1s)
 in up/down/left/right directions until no more connected trees are left.
  */
+
+import java.util.*;
 public class Fire {
+    static int n, m;
+    static char[][] forest;
+    static int[][] directions = {{-1,0}, {1,0}, {0,-1}, {0,1}}; // up, down, left, right
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Read grid dimensions
+        n = sc.nextInt();
+        m = sc.nextInt();
+        sc.nextLine(); // consume the newline
+
+        // Read forest grid
+        forest = new char[n][m];
+        for (int i = 0; i < n; i++) {
+            forest[i] = sc.nextLine().toCharArray();
+        }
+
+        // Read fire starting point
+        int r = sc.nextInt();
+        int c = sc.nextInt();
+
+        // Start DFS fire spread if starting point is a tree
+        if (forest[r][c] == '1') {
+            dfs(r, c);
+        }
+
+        // Print updated grid
+        for (int i = 0; i < n; i++) {
+            System.out.println(new String(forest[i]));
+        }
+    }
+
+    static void dfs(int row, int col) {
+        // Boundary and validity check
+        if (row < 0 || col < 0 || row >= n || col >= m || forest[row][col] != '1') {
+            return;
+        }
+
+        forest[row][col] = '0'; // Burn the tree
+
+        // Spread fire in all 4 directions
+        for (int[] dir : directions) {
+            int newRow = row + dir[0];
+            int newCol = col + dir[1];
+            dfs(newRow, newCol);
+        }
+    }
 }

@@ -35,6 +35,7 @@ class Test{
     }
 }
 */
+
 import java.util.*;
 
 public class Backtracking{
@@ -62,3 +63,59 @@ public class Backtracking{
         System.out.println(output);
     }
 }
+
+/*
+import java.util.*;
+public class Backtracking{
+    public static void main(String[]args){
+        Scanner sc=new Scanner(System.in);
+        String s[]=sc.nextLine().split(" ");
+        int n[]=new int[s.length];
+        for(int i=0;i<s.length;i++){
+            n[i]=Integer.parseInt(s[i]);
+        }
+        List<List<Integer>> res =new ArrayList<>();
+        backtrack(0,n,new ArrayList<>(),res);
+
+       // res.sort(Comparator.comparing(Object::toString));
+        System.out.println(res);
+    }
+    public static void backtrack(int start,int n[],List<Integer> current,List<List<Integer>> res){
+        res.add(new ArrayList<>(current));
+        for(int i=start;i<n.length;i++){
+            current.add(n[i]);
+            backtrack(i+1,n,current,res);
+            current.remove(current.size()-1);
+        }
+    }
+}
+
+ */
+/*
+public class Solution {
+
+    List<List<Integer>> result = new ArrayList<>();
+    backtrack(result, new ArrayList<>(), nums, 0);
+ System.out.println(result);
+}
+
+public void backtrack(List<List<Integer>> result, List<Integer> tempList, int[] nums, int start) {
+    // Base case: if certain condition is met, add current solution
+    result.add(new ArrayList<>(tempList));  // Make a copy of current solution
+    return;
+    for (int i = start; i < nums.length; i++) {
+        // Choose
+        tempList.add(nums[i]);
+
+        // Explore
+        backtrack(result, tempList, nums, i + 1);  // i or i + 1 depending on problem
+
+        // Un-choose (backtrack)
+        tempList.remove(tempList.size() - 1);
+    }
+}
+
+
+The above is backtracking template helps for majority of backtracking problems
+
+ */

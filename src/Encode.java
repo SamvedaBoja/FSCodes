@@ -1,4 +1,3 @@
-
 /*
 Given a string S in encoded form, and  an integer array indices[] of string length.
 

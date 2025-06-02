@@ -29,6 +29,7 @@ in the suffix. Thus, diff[4] = 5 - 0 = 5.
 
 
  */
+/*
 import java.util.*;
 class Diiference{
     public static void main(String[]args){
@@ -54,5 +55,46 @@ class Diiference{
             l.add(h1.size()-h2.size());
         }
         System.out.print(l);
+    }
+}
+
+ */
+
+import java.util.*;
+
+class Diiference {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] nums = new int[n];
+        for(int i = 0; i < n; i++){
+            nums[i] = sc.nextInt();
+        }
+
+        int[] prefix = new int[n];
+        int[] suffix = new int[n];
+
+        // Count distinct elements in prefix
+        Set<Integer> set = new HashSet<>();
+        for(int i = 0; i < n; i++){
+            set.add(nums[i]);
+            prefix[i] = set.size();
+        }
+
+        // Count distinct elements in suffix
+        set.clear();
+        for(int i = n - 1; i >= 0; i--){
+            set.add(nums[i]);
+            suffix[i] = set.size();
+        }
+
+        // Compute the difference
+        int[] diff = new int[n];
+        for(int i = 0; i <n; i++){
+            int suff = (i == n - 1) ? 0 : suffix[i + 1];
+            diff[i] = prefix[i] - suff;
+        }
+
+        System.out.println(Arrays.toString(diff));
     }
 }

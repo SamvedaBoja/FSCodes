@@ -21,10 +21,9 @@ class BinarySearch {
         String s[]=sc.nextLine().split(" ");
         int a[]=new int[s.length];
         for(int i=0;i<a.length;i++){
-            a[i]=sc.nextInt();
+            a[i]=Integer.parseInt(s[i]);
         }
         int k=sc.nextInt();
-        int index=0;
         int l=0,r=a.length-1;
         while(l<=r){
             int  mid=l+(r-l)/2;

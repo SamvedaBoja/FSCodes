@@ -28,6 +28,31 @@ class test{
 }
 */
 /*
+//Level order traversal
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        List<List<Integer>> l = new LinkedList<List<Integer>>();
+        if(root==null)
+        return l;
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            int level = queue.size();
+            List<Integer> sub = new LinkedList<Integer>();
+            for(int i=0;i<level;i++){
+                if(queue.peek().left != null)
+                    queue.offer(queue.peek().left);
+                if(queue.peek().right != null)
+                    queue.offer(queue.peek().right);
+                sub.add(queue.poll().val);
+            }
+            l.add(sub);
+        }
+        return l;
+    }
+}
+ */
+/*
 //SAME TREES
 Given the roots of two binary trees p and q, write a function to check if they
 are the same or not.
@@ -802,3 +827,92 @@ class Solution {
     }
 }
  */
+/*
+
+Given the root of a binary tree, determine if it is a valid binary search tree (BST).
+
+A valid BST is defined as follows:
+
+The left subtree of a node contains only nodes with keys less than the node's key.
+The right subtree of a node contains only nodes with keys greater than the node's key.
+Both the left and right subtrees must also be binary search trees.
+
+
+Sample Testcase:1
+------------------------------
+input=3
+2 1 3
+output=true
+
+input=7
+5 1 4 -1 -1 3 6
+Output=false
+Explanation:
+---------------------------
+The root node's value is 5 but its right child's value is 4.
+public class Solution {
+    public boolean isValidBST(TreeNode root){
+        return valid(root);
+    }
+    public boolean valid(TreeNode root){
+        if(root == null)
+            return true;
+        if(root.left != null && root.left.val > root.val)
+            return false;
+        if(root.right != null && root.right.val < root.val)
+            return false;
+        return valid(root.left) && valid(root.right);
+    }
+}
+ */
+/*
+Given the root of a binary tree, imagine yourself standing on the right side
+of it, return the values of the nodes you can see ordered from top to bottom.
+
+Sample Testcase:1
+----------------------------
+input=7
+1 2 3 -1 5 -1 4
+output=[1, 3, 4]
+ */
+/*
+class Node
+{
+    int data;
+    Node left, right;
+    Node(int data)
+    {
+        this.data = data;
+        left = right = null;
+    }
+}
+import java.util.*;
+class Solution
+{
+    List<Integer> rightSideView(Node root)
+    {
+        List<Integer> res = new ArrayList<>();
+        if(root == null)
+            return res;
+
+        Queue<Node> q= new LinkedList<>();
+        q.offer(root);
+
+        while(!q.isEmpty()){
+            int size=q.size();
+            for(int i=0;i<size;i++){
+                Node node = q.poll();
+
+                if( i== size-1){
+                    res.add(node.data);
+                }
+                if(node.left != null)
+                    q.offer(node.left);
+                if(node.right != null)
+                    q.offer(node.right);
+            }
+        }
+        return res;
+    }
+}
+*/

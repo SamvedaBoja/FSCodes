@@ -46,49 +46,48 @@ All connected 1s around (1, 1) should be changed to 5.
 import java.util.Scanner;
 public class ColorDFS
 {
-    static int n, m;
-    static int[][] forest;
-    static int count = 0;
-    static int p1;
-    static int scolor;
+    static int m, n;
+    static int[][] mat;
+    static int newColor;
+    static int originalColor;
     public static void main(String[] args)
     {
         Scanner sc = new Scanner(System.in);
-        n = sc.nextInt();
         m = sc.nextInt();
+        n = sc.nextInt();
         sc.nextLine();
-        forest = new int[n][m];
-        for (int i = 0; i < n; i++)
+        mat = new int[m][n];
+        for (int i = 0; i < m; i++)
         {
-            for(int j =0;j<m;j++)
+            for(int j =0;j<n;j++)
             {
-                forest[i][j] = sc.nextInt();
+                mat[i][j] = sc.nextInt();
             }
         }
-        int rst = sc.nextInt();
-        int rct = sc.nextInt();
-        p1 = sc.nextInt();
-        scolor = forest[rst][rct];
-        dfs(rst,rct);
-        for (int i = 0; i < n; i++)
+        int sr = sc.nextInt();
+        int scl = sc.nextInt();
+        newColor = sc.nextInt();
+        originalColor = mat[sr][scl];
+        dfs(sr,scl);
+        for (int i = 0; i < m; i++)
         {
-            for(int j =0;j<m;j++)
+            for(int j =0;j<n;j++)
             {
-                System.out.print(forest[i][j]+ " ");
+                System.out.print(mat[i][j]+ " ");
             }
-            System.out.println("");
+            System.out.println();
         }
     }
-    static void dfs(int row, int col)
+    static void dfs(int i, int j)
     {
-        if (row < 0 || col < 0 || row >= n || col >= m || forest[row][col] != scolor)
+        if (i < 0 || j < 0 || i >= m || j >= n || mat[i][j] != originalColor)
         {
             return;
         }
-        forest[row][col] = p1;
-        dfs(row - 1, col);
-        dfs(row + 1, col);
-        dfs(row, col - 1);
-        dfs(row, col + 1);
+        mat[i][j] = newColor;
+        dfs(i - 1, j);
+        dfs(i + 1, j);
+        dfs(i, j - 1);
+        dfs(i, j + 1);
     }
 }
