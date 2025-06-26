@@ -916,3 +916,179 @@ class Solution
     }
 }
 */
+/*
+Write a Java program to perform inorder traversal of a binary tree without using recursion.
+Use a stack to simulate the traversal.
+
+Input Format:
+------------------------
+A single line of space-separated integers representing level-order traversal of the binary tree.
+Use -1 for null nodes.
+
+Sample Testcase:1
+---------------------------------------
+input=1 2 3 -1 -1 -1 -1
+output=2 1 3
+
+import java.util.*;
+
+class Node {
+    int data;
+    Node left, right;
+    Node(int val) { data = val; }
+}
+import java.util.*;
+public class Soltuion {
+    static void inorder(Node root) {
+        Stack<Node> st=new Stack<>();
+        Node current = root;
+        while(!st.isEmpty() || current!=null){
+            while(current != null){
+                st.push(current);
+                current=current.left;
+            }
+            current = st.pop();
+            System.out.print(current.data+" ");
+            current = current.right;
+        }
+    }
+}
+ */
+/*
+Write a Java program to count the number of leaf nodes in a binary tree without using recursion.
+Use a stack for tree traversal.
+
+Input Format:
+---------------------------
+A single line of space-separated integers in level-order.
+Use -1 for null nodes.
+
+Sample Testcase:1
+-------------------------------
+1 2 3 -1 -1 -1 -1
+output=2
+
+import java.util.*;
+
+class Node {
+    int data;
+    Node left, right;
+    Node(int val) { data = val; }
+}
+
+public class Solution {
+    static int countLeaves(Node root){
+        int count=0;
+        Stack<Node> st= new Stack<>();
+        Node current = root;
+        while(!st.isEmpty() || current!=null){
+            while(current!=null){
+                st.push(current);
+                current=current.left;
+            }
+            current=st.pop();
+            if(current.left==null && current.right==null){
+                count++;
+            }
+            current=current.right;
+        }
+        return count;
+    }
+}
+ */
+/*
+Write a Java program to find the height of a binary tree using an
+iterative level-order traversal approach.
+
+Input Format:
+----------------------------
+Space-separated integers in level-order format.
+-1 represents null nodes.
+
+Sample Testcase:1
+----------------------------------
+input=1 2 3 -1 -1 -1 -1
+output=2
+
+import java.util.*;
+
+class Node {
+    int data;
+    Node left, right;
+    Node(int val) { data = val; }
+}
+
+public class Solution{
+    static int height(Node root){
+        int height=0;
+        Queue<Node> queue = new LinkedList<>();
+        if(root == null)
+            return 0;
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            int size=queue.size();
+            for(int i=0;i<size;i++){
+                Node node = queue.poll();
+                if(node.left != null)
+                    queue.offer(node.left);
+                if(node.right != null)
+                    queue.offer(node.right);
+            }
+            height++;
+        }
+        return height;
+    }
+}
+ */
+/*
+Write a Java program to check if two binary trees are identical in structure and
+data without using recursion. Use queues for iterative comparison.
+
+Input Format:
+------------------------------------
+Two lines of space-separated integers (each line is a tree in level-order).
+-1 represents null nodes.
+
+Sample Testcase:1
+-------------------------------
+iput=1 2 3 -1 -1 -1 -1
+1 2 3 -1 -1 -1 -1
+output=2
+
+
+import java.util.*;
+
+class Node {
+    int data;
+    Node left, right;
+    Node(int val) { data = val; }
+}
+
+public class Solution{
+    static boolean isIdentical(Node root1, Node root2){
+        Queue<Node> q1=new LinkedList<>();
+        Queue<Node> q2=new LinkedList<>();
+
+        q1.add(root1);
+        q2.add(root2);
+
+        if(root1==null && root2==null)
+            return true;
+        if(root1==null && root2==null || root1.data != root2.data)
+            return false;
+        while(!q1.isEmpty() && !q2.isEmpty()){
+            Node n1=q1.poll();
+            Node n2=q2.poll();
+
+
+            q1.add(n1.left);
+            q1.add(n1.right);
+            q2.add(n2.left);
+            q2.add(n2.right);
+        }
+        return q1.isEmpty() && q2.isEmpty();
+
+    }
+
+}
+ */

@@ -121,3 +121,80 @@ class Solution {
     }
             }
  */
+/*
+You are given two Binary Search Trees (BSTs), each containing distinct integers. Your task is to:
+
+Perform in-order traversal of each BST to extract sorted lists.
+
+Merge all three sorted lists into a single sorted list.
+
+Construct a balanced Binary Search Tree (BST) from the merged list.
+
+Print the in-order traversal of the final balanced BST.
+
+Sample Testcase:1
+---------------------------------
+input=3
+2 1 4
+3
+5 3 6
+output=[1, 2, 3, 4, 5, 6]
+
+import java.util.*;
+
+/*
+class TreeNode {
+    int val;
+    TreeNode left, right;
+    TreeNode(int x) { val = x; }
+}
+*/
+/*
+public class Solution {
+
+    public static TreeNode insert(TreeNode root, int val) {
+        if(root == null)
+            return new TreeNode(val);
+        if(val < root.val){
+            root.left = insert(root.left,val);
+        }
+        else
+            root.right = insert(root.right,val);
+        return root;
+    }
+
+    public static void inorder(TreeNode root, List<Integer> list) {
+        if(root == null)
+            return;
+        inorder(root.left,list);
+        list.add(root.val);
+        inorder(root.right,list);
+    }
+
+    public static List<Integer> merge(List<Integer> l1,List<Integer> l2){
+        /*
+       List<Integer> l3 = new ArrayList<>();
+       int i=0,j=0;
+       while(i<l1.size() && j<l2.size())
+       l1.addAll(l2);
+
+        for(int i:l2){
+            l1.add(i);
+        }
+        Collections.sort(l1);
+        return l1;
+
+    }
+
+    public static TreeNode buildBST(List<Integer> arr, int low, int high) {
+        if(low>high)
+            return null;
+        int mid = (low+high)/2;
+        TreeNode root = new TreeNode(arr.get(mid));
+        root.left = buildBST(arr,low,mid-1);
+        root.right = buildBST(arr,mid+1,high);
+        return root;
+    }
+
+}
+*/
