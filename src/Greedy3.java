@@ -26,6 +26,7 @@ It can be proven that 4 is the minimum number of seconds needed.
 
  */
 import java.util.*;
+import java.util.Arrays;
 class Greedy3{
     public static void main(String[]args){
         Scanner sc=new Scanner(System.in);

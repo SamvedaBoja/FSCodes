@@ -8,7 +8,7 @@ output =[[god, dog, ogd],[abc, cba],[aaa]]
 
 
  */
-
+/*
 import java.util.*;
 class Anagrams{
     public static void main(String[]args){
@@ -28,3 +28,5 @@ class Anagrams{
         System.out.println(l);
     }
 }
+
+ */

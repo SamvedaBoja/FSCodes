@@ -30,7 +30,7 @@ You can take all the boxes of the first and second types, and one box
 of the third type.
 The total number of units will be = (1 * 3) + (2 * 2) + (1 * 1) = 8.
  */
-
+/*
 import java.util.*;
 class Greedy17{
     public static void main(String[]args){
@@ -54,3 +54,5 @@ class Greedy17{
         System.out.println(units);
     }
 }
+
+ */

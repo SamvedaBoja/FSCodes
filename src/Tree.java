@@ -1092,3 +1092,164 @@ public class Solution{
 
 }
  */
+/*
+Alice is working with Binary Trees.
+The elements of the tree is given in the level order format.
+Alice is looking the tree from right side.
+So, he can view only leftmost nodes only (one node per level).
+
+You will be given the root of the binary tree.
+Your task is to find the nodes which can be viewed by Alice from left side.
+And print the nodes from top to bottom order.
+
+Your task is to implement the class Solution:
+	- public List<Integer> leftSideView(BinaryTreeNode root):
+	return the list of node values.
+
+NOTE:
+Please do consider the node with data=-1 as null node in the given trees.
+
+Input Format:
+-------------
+Space separated integers, elements of the tree.
+
+Output Format:
+--------------
+Print a boolean value.
+
+
+Sample Input-1:
+---------------
+1 2 3 5 -1 -1 5
+
+Sample Output-1:
+----------------
+[1, 2, 5]
+
+ */
+
+/*
+import java.util.*;
+
+class BinaryTreeNode {
+    public int data;
+    public BinaryTreeNode left, right;
+
+    public BinaryTreeNode(int data) {
+        this.data = data;
+        left = null;
+        right = null;
+    }
+}
+
+public class LSView {
+    static BinaryTreeNode buildTree(String[] arr) {
+        if (arr.length == 0 || arr[0].equals("-1")) return null;
+
+        BinaryTreeNode root = new BinaryTreeNode(Integer.parseInt(arr[0]));
+        Queue<BinaryTreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        int i = 1;
+        while (!queue.isEmpty() && i < arr.length) {
+            BinaryTreeNode current = queue.poll();
+
+            // Left child
+            if (i < arr.length && !arr[i].equals("-1")) {
+                current.left = new BinaryTreeNode(Integer.parseInt(arr[i]));
+                queue.offer(current.left);
+            }
+            i++;
+
+            // Right child
+            if (i < arr.length && !arr[i].equals("-1")) {
+                current.right = new BinaryTreeNode(Integer.parseInt(arr[i]));
+                queue.offer(current.right);
+            }
+            i++;
+        }
+
+        return root;
+    }
+
+    public List<Integer> leftSideView(BinaryTreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        if (root == null) return result;
+
+        Queue<BinaryTreeNode> queue = new LinkedList<>();
+        queue.offer(root);
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+
+            for (int i = 0; i < size; i++) {
+                BinaryTreeNode current = queue.poll();
+                // Add the first node (leftmost) at this level
+                if (i == 0) {
+                    result.add(current.data);
+                }
+
+                if (current.left != null) queue.offer(current.left);
+                if (current.right != null) queue.offer(current.right);
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        String[] arr = sc.nextLine().split(" ");
+
+        BinaryTreeNode root = buildTree(arr);
+
+        LSView sol = new LSView();
+        List<Integer> output = sol.leftSideView(root);
+        System.out.println(output);
+    }
+}
+
+ */
+/*
+You are given the root of a binary tree where each node has a value 0 or 1.
+Each root-to-leaf path represents a binary number starting
+with the most significant bit.
+
+For example, if the path is 0 -> 1 -> 1 -> 0 -> 1,
+then this could represent 01101 in binary, which is 13.
+For all leaves in the tree, consider the numbers represented by
+the path from the root to that leaf. Return the sum of these numbers.
+
+
+Sample Testcase:1
+---------------------------------------
+         1
+        /\
+       0  1
+      /\  /\
+     0 10 1
+input=1 0 1 0 1 0 1
+output=22
+Explanation:
+------------------------------------
+(100) + (101) + (110) + (111) = 4 + 5 + 6 + 7 = 22
+
+import java.util.*;
+public class Solution {
+    public int sumRootToLeaf(TreeNode root)
+    {
+        return sum(root,0);
+    }
+    public int sum(TreeNode root,int s){
+        if(root==null)
+            return 0;
+        s=s*10+root.val;
+        if(root.left==null && root.right==null){
+            String bin=Integer.toString(s);
+            int total=Integer.parseInt(bin,2);
+            return total;
+        }
+        return sum(root.left,s)+sum(root.right,s);
+    }
+}
+ */

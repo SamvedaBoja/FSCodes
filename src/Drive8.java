@@ -21,7 +21,7 @@ and 3.
 Therefore, (3,2,12is neturned as the output.
 
  */
-
+/*
 import java.util.*;
 
 public class Drive8  {
@@ -57,3 +57,5 @@ public class Drive8  {
         System.out.println(Arrays.toString(P)); // Output: [3, 2, 1]
     }
 }
+
+ */
